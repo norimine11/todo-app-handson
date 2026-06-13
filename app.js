@@ -1,6 +1,6 @@
-const form = document.getElementById("todo-form");
-const input = document.getElementById("todo-input");
-const list = document.getElementById("todo-list");
+const form  = document.getElementById("task-form");
+const input = document.getElementById("task-input");
+const list  = document.getElementById("task-list");
 
 const STORAGE_KEY = "todo-app-tasks";
 
@@ -14,7 +14,17 @@ function renderTasks() {
   list.innerHTML = "";
   tasks.forEach((task) => {
     const li = document.createElement("li");
-    li.textContent = task;
+    li.className = "task-item";
+
+    const label = document.createElement("label");
+    label.className = "task-item-label";
+
+    const span = document.createElement("span");
+    span.className = "task-text";
+    span.textContent = task;
+
+    label.appendChild(span);
+    li.appendChild(label);
     list.appendChild(li);
   });
 }
